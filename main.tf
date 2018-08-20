@@ -14,7 +14,7 @@ resource "azurerm_container_group" "aci-helloworld" {
   os_type             = "windows"
 
   container {
-    name   = "petclinic_windows"
+    name   = "petclinic-container"
     image  = "jreedie/windows_petclinic"
     cpu    ="1"
     memory =  "1.5"
