@@ -1,0 +1,5 @@
+FROM openjdk:8u181-jdk-windowsservercore-ltsc2016
+
+ADD target/spring-petclinic-2.0.0.BUILD-SNAPSHOT.jar /
+
+CMD "java" "-jar" "spring-petclinic-2.0.0.BUILD-SNAPSHOT.jar"
