@@ -6,18 +6,15 @@ pipeline {
         stage('Build on Windows') {
             steps{
                 powershell 'mvn clean package'
-                powershell 'ls'
-                powershell 'docker --version'
             }
         }
 
         stage('Build Docker Image') {
             steps{
-                script{
-                    docker.withRegistry('', 'docker_login'){
-                        def customImage = docker.build("jreedie/windows_petclinic:latest", "-f Dockerfile-app .")
-                        customImage.push()
-                    }
+                withCredentials([usernamePassword(credentialsId: 'docker_login', usernameVariable: 'login', passwordVariable: 'password')]) {
+                    powershell 'docker login -u $login -p $password'
+                    powershell 'docker build -t jreedie/windows_petclinic:latest -f Dockerfile-app .'
+                    powershell 'docker push jreedie/windows_petclinic:latest'
                 }
             }
         }
