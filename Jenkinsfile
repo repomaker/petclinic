@@ -5,8 +5,7 @@ pipeline {
 
         stage('Build on Windows') {
             steps{
-                powershell 'ls'
-                powershell 'mvn --version'
+                powershell 'mvn clean package'
             }
         }
     }
