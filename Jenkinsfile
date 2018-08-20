@@ -22,8 +22,10 @@ pipeline {
 
         stage('Deploy app') {
             agent { label 'master' }
-            sh 'terraform init'
-            sh 'terraform apply -auto-approve'
+            steps{
+                sh 'terraform init'
+                sh 'terraform apply -auto-approve'
+            }
         }
     }
 }
