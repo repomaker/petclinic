@@ -7,6 +7,7 @@ pipeline {
             steps{
                 powershell 'mvn clean package'
                 powershell 'ls'
+                powershell 'docker --version'
             }
         }
 
