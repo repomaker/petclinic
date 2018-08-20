@@ -11,8 +11,7 @@ pipeline {
 
         stage('Build Docker Image') {
             steps{
-                withCredentials([usernamePassword(credentialsId: 'docker_login', usernameVariable: 'login', passwordVariable: 'password')]) {
-                    powershell 'docker login -u $login -p $password'
+                withDockerRegistry([credentialsId: 'docker_login', url: '']){
                     powershell 'docker build -t jreedie/windows_petclinic:latest -f Dockerfile-app .'
                     powershell 'docker push jreedie/windows_petclinic:latest'
                 }
