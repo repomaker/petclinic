@@ -31,3 +31,5 @@ ENV ASPNETCORE_URLS=http://+:80 `
 
 # Trigger first run experience by running arbitrary cmd to populate local package cache
 RUN dotnet help
+
+ENTRYPOINT \.slave-launch.ps1
