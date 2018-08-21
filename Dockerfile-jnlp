@@ -2,6 +2,6 @@
 
 FROM microsoft/dotnet:2.1-sdk-nanoserver-1803 
 
-COPY "agent.jar" "/agent.jar"
+COPY "agent.jar" "\agent.jar"
 
 ENTRYPOINT ["java" "-jar" "agent.jar"] 
