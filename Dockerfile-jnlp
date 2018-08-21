@@ -1,3 +1,5 @@
+# escape=`
+
 FROM jonathank/jenkins-jnlp-slave-windows
 
 SHELL ["powershell", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference = 'SilentlyContinue';"]
