@@ -5,7 +5,7 @@ provider "azurerm" {
   tenant_id = "${var.azure_tenant_id}"
 }
 
-resource "azurerm_container_group" "aci-helloworld" {
+resource "azurerm_container_group" "default" {
   name                = "petclinic"
   location            = "East US"
   resource_group_name = "petclinic"
@@ -26,5 +26,7 @@ resource "azurerm_container_group" "aci-helloworld" {
   }
 }
 
-
+output "fqdn" {
+  value = "${azurerm_container_group.default.fqdn}"
+}
 
