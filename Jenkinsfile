@@ -21,8 +21,9 @@ pipeline {
         stage('Deploy app') {
             agent { label 'master' }
             steps{
-                sh 'terraform init'
-                sh 'terraform apply -auto-approve'
+                withCredentials([string(credentialsId: 'vault_token', variable: 'TOKEN')]) {
+                    deployAzure '$TOKEN'
+                }
             }
         }
     }
