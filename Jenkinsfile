@@ -5,7 +5,7 @@ pipeline {
 
         stage('Build on Windows') {
             steps{
-                powershell 'ls'
+                powershell 'mvn clean package'
             }
         }
 
@@ -24,7 +24,7 @@ pipeline {
                 withCredentials([string(credentialsId: 'vault_token', variable: 'TOKEN')]) {
                     deployAzure '$TOKEN'
                 }
-                sh 'terraform output fqdn'
+                sh 'terraform output fq'
             }
         }
     }
