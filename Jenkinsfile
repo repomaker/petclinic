@@ -24,7 +24,7 @@ pipeline {
                 withCredentials([string(credentialsId: 'vault_token', variable: 'TOKEN')]) {
                     deployAzure '$TOKEN'
                 }
-                sh 'terraform output fq'
+                sh 'terraform output fqdn'
             }
         }
     }
